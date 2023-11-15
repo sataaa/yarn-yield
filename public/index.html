@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yarn Yield</title>
+  <script src="parchment/jquery.min.js" defer></script>
+  <script src="parchment/parchmento.min.js" defer></script>
+  <link rel="stylesheet" href="parchment/parchment.min.css">
   <style>
     body {
       display: flex;
@@ -50,9 +53,7 @@
 
 <body>
   <div id="game-column" class="dark-grey-bg">
-    <!-- Placeholder content for the game -->
-    <h2>Game Area</h2>
-    <p>This is where the Parchment Z-machine game will be displayed.</p>
+    <div id="parchment"></div>
   </div>
   <div id="chat-column" class="dark-grey-bg">
     <!-- Placeholder content for the chat -->
@@ -67,7 +68,23 @@
   </div>
 
   <!-- Add your scripts or other external resources as needed -->
-  <script>
+  <!-- Include Parchment library -->
+  <script src="https://cdn.jsdelivr.net/npm/parchment@latest/dist/parchment.min.js"></script>
+  <script type="text/javascript">
+
+    var parchment_options = {
+        page_title: false,
+        lock_story: true,
+        default_story: 'LostPig.z8.js',
+        lib_path: '../parchment/',
+        scrollparent: '#parchment',
+        semanticcolor: true,
+        oldstylebox: true,
+        width: 120,
+        proxy_url: 'xxx'
+      };
+    
+
     function sendMessageOnEnter(event) {
         if (event.key === 'Enter') {
           // Prevent the default behavior of the Enter key (e.g., new line in text area)
