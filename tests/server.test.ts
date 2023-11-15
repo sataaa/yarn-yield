@@ -6,9 +6,9 @@ afterAll((done) => {
 })
 
 describe('GET /', () => {
-  it('responds with HTML containing "Lero Lero World!"', async () => {
+  it('responds with HTML containing "Yarn Yield!"', async () => {
     const response = await request(app).get('/');
     expect(response.status).toBe(200);
-    expect(response.text).toContain('Lero Lero World!');
+    expect(response.text).toContain('Yarn Yield');
   });
 });

@@ -1,3 +1,11 @@
+FROM node:14 as builder
+
+WORKDIR /app
+
+COPY package.json yarn.lock ./
+
+RUN yarn install
+
 FROM node:14
 
 WORKDIR /app
@@ -9,13 +17,11 @@ RUN chown 1001:app /app -R
 
 COPY --chown=1001:app ./public ./public
 
+COPY --from=builder --chown=1001:app ./app .
+
 COPY --chown=1001:app ./src .
 
-COPY --chown=1001:app package.json yarn.lock ./
-
 USER app
-
-RUN yarn install
 
 EXPOSE 3000
 

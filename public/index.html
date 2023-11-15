@@ -4,11 +4,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Static File Example</title>
+  <title>Yarn Yield</title>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .dark-grey-bg {
+      background-color: darkslategray;
+    }
+
+    #game-column {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        border-right: 10px solid bisque;
+        color: bisque
+    }
+
+    #chat-column {
+        flex: 1;
+        padding: 20px;
+        background-color: #333; /* Dark gray background */
+        overflow-y: auto;
+        color: lightblue
+    }
+
+    /* Styles for chat input and messages */
+    #chat-messages {
+        margin-bottom: 10px;
+    }
+
+    #message-input {
+        width: calc(100% - 70px);
+        margin-right: 10px;
+    }
+
+    button {
+        width: 60px;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Lero Lero World!</h1>
+  <div id="game-column" class="dark-grey-bg">
+    <!-- Placeholder content for the game -->
+    <h2>Game Area</h2>
+    <p>This is where the Parchment Z-machine game will be displayed.</p>
+  </div>
+  <div id="chat-column" class="dark-grey-bg">
+    <!-- Placeholder content for the chat -->
+    <h2>Chat Area</h2>
+    <div id="chat-messages">
+      <!-- Chat messages will be displayed here -->
+    </div>
+    <div>
+      <!-- Input form for sending messages -->
+      <input type="text" id="message-input" placeholder="Type your message..." onkeydown="sendMessageOnEnter(event)">
+    </div>
+  </div>
+
+  <!-- Add your scripts or other external resources as needed -->
+  <script>
+    function sendMessageOnEnter(event) {
+        if (event.key === 'Enter') {
+          // Prevent the default behavior of the Enter key (e.g., new line in text area)
+          event.preventDefault();
+
+          // Implement the logic to send messages
+          const messageInput = document.getElementById('message-input');
+          const message = messageInput.value;
+
+          // Display the message in the chat area (this is just a basic example)
+          const chatMessages = document.getElementById('chat-messages');
+          const newMessage = document.createElement('div');
+          newMessage.textContent = `User: ${message}`;
+          chatMessages.appendChild(newMessage);
+
+          // Clear the input field
+          messageInput.value = '';
+        }
+      }
+
+    // Add your JavaScript code here, e.g., for handling chat functionality
+    function sendMessage() {
+      // Implement the logic to send messages
+      const messageInput = document.getElementById('message-input');
+      const message = messageInput.value;
+
+      // Display the message in the chat area (this is just a basic example)
+      const chatMessages = document.getElementById('chat-messages');
+      const newMessage = document.createElement('div');
+      newMessage.textContent = `User: ${message}`;
+      chatMessages.appendChild(newMessage);
+
+      // Clear the input field
+      messageInput.value = '';
+    }
+  </script>
 </body>
 
 </html>
